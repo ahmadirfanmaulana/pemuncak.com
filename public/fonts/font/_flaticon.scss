@@ -1,0 +1,73 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 23/04/2018 08:45
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-sun:before { content: "\f100"; }
+.flaticon-wind-1:before { content: "\f101"; }
+.flaticon-storm-1:before { content: "\f102"; }
+.flaticon-cloud-1:before { content: "\f103"; }
+.flaticon-wind:before { content: "\f104"; }
+.flaticon-storm:before { content: "\f105"; }
+.flaticon-raining:before { content: "\f106"; }
+.flaticon-cloudy:before { content: "\f107"; }
+.flaticon-cloudy-1:before { content: "\f108"; }
+.flaticon-goal:before { content: "\f109"; }
+.flaticon-cloud:before { content: "\f10a"; }
+.flaticon-route:before { content: "\f10b"; }
+.flaticon-street-view:before { content: "\f10c"; }
+.flaticon-tent:before { content: "\f10d"; }
+.flaticon-people:before { content: "\f10e"; }
+.flaticon-hiking:before { content: "\f10f"; }
+.flaticon-trekking:before { content: "\f110"; }
+    
+    $font-Flaticon-sun: "\f100";
+    $font-Flaticon-wind-1: "\f101";
+    $font-Flaticon-storm-1: "\f102";
+    $font-Flaticon-cloud-1: "\f103";
+    $font-Flaticon-wind: "\f104";
+    $font-Flaticon-storm: "\f105";
+    $font-Flaticon-raining: "\f106";
+    $font-Flaticon-cloudy: "\f107";
+    $font-Flaticon-cloudy-1: "\f108";
+    $font-Flaticon-goal: "\f109";
+    $font-Flaticon-cloud: "\f10a";
+    $font-Flaticon-route: "\f10b";
+    $font-Flaticon-street-view: "\f10c";
+    $font-Flaticon-tent: "\f10d";
+    $font-Flaticon-people: "\f10e";
+    $font-Flaticon-hiking: "\f10f";
+    $font-Flaticon-trekking: "\f110";
