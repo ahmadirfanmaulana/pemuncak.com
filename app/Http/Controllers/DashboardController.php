@@ -7,19 +7,21 @@ use App\Http\Controllers\Auth;
 
 class DashboardController extends Controller
 {
-    public function __construct()
+
+    //
+    public function main()
     {
 
+      return view('layouts.app_dashboard');
+
     }
-    //
+
     public function index()
     {
-      $session = session([
-        'pageActive' => 'dashboard'
-      ]);
 
-      return view('site.climbing.dashboard');
+      return view('site.climbing.home');
+
     }
 
-    
+
 }

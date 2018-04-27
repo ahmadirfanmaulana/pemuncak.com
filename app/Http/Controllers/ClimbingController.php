@@ -10,9 +10,7 @@ class ClimbingController extends Controller
     //
     public function __construct()
     {
-      $session = session([
-        'pageActive' => 'climbing'
-      ]);
+      $this->menu = "climbing";
     }
 
     public function index()

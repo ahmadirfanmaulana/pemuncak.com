@@ -8,11 +8,9 @@ class PacketsController extends Controller
 {
     //
 
-    public function pageActive()
+    public function __construct()
     {
-      return $session = session([
-        'pageActive' => 'packets'
-      ]);
+      $this->menu = "packets";
     }
 
     public function index()

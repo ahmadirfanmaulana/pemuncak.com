@@ -30,15 +30,24 @@
         font-size: 36px;
         margin-right: 6px;
       }
+      .flaticon:before{
+        margin-left: 0px;
+      }
+      .flaticon-30:before{
+        font-size: 35px;
+      }
       .flaticon-xs:before{
         font-size: 0.875rem;
         margin-left: 0px;
       }
+      .pointer{
+        cursor: pointer;
+      }
     </style>
 
   </head>
-  <body class="slim-sticky-header">
-    <div class="slim-header">
+  <body class="slim-sticky-header" ng-app="climbing">
+    <div class="slim-header" ng-controller="header">
       <div class="container">
         <div class="slim-header-left">
           <h2 class="slim-logo"><a href="{{ url('') }}"><i class="flaticon-people icon-header"></i> PEMUNCAK<span style="color:#444;">.COM</span></a></h2>
@@ -184,13 +193,11 @@
       </div><!-- container -->
     </div><!-- slim-header -->
 
-    <div class="slim-navbar">
+    <div class="slim-navbar" ng-controller="navbar">
       <div class="container">
         <ul class="nav">
-          <li class="nav-item @if (Session::get('pageActive') == 'dashboard')
-            {{ "active" }}
-          @endif">
-            <a class="nav-link" href="{{ url('dashboard') }}">
+          <li class="nav-item" id="nav-dashboard">
+            <a class="nav-link pointer" href="{{ url('dashboard') }}">
               <i class="icon ion-ios-home-outline"></i>
               <span>Dashboard</span>
             </a>
@@ -204,34 +211,26 @@
               </ul>
             </div><!-- sub-item --> --}}
           </li>
-          <li class="nav-item @if (Session::get('pageActive') == 'adventure')
-            {{ "active" }}
-          @endif">
-            <a class="nav-link" href="{{ url('dashboard/adventure') }}">
+          <li class="nav-item" id="nav-adventure">
+            <a class="nav-link pointer" ng-click="goTo('adventure')">
               <i class="icon flaticon-hiking"></i>
               <span>Adventure</span>
             </a>
           </li>
-          <li class="nav-item @if (Session::get('pageActive') == 'climbing')
-            {{ "active" }}
-          @endif">
-            <a class="nav-link" href="{{ url('dashboard/climbing') }}">
+          <li class="nav-item" id="nav-climbing">
+            <a class="nav-link pointer" ng-click="goTo('climbing')">
               <i class="icon flaticon-trekking"></i>
               <span>Climbing</span>
             </a>
           </li>
-          <li class="nav-item @if (Session::get('pageActive') == 'post')
-            {{ "active" }}
-          @endif">
-            <a class="nav-link" href="{{ url('dashboard/posts') }}">
+          <li class="nav-item" id="nav-posts">
+            <a class="nav-link pointer" ng-click="goTo('potst')">
               <i class="icon ion-paper-airplane"></i>
               <span>Posts</span>
             </a>
           </li>
-          <li class="nav-item  @if (Session::get('pageActive') == 'packets')
-            {{ "active" }}
-          @endif">
-            <a class="nav-link" href="{{ url('dashboard/packets') }}">
+          <li class="nav-item" id="nav-packets">
+            <a class="nav-link pointer" ng-click="goTo('packets')">
               <i class="icon ion-ios-filing-outline"></i>
               <span>Packets</span>
             </a>
@@ -240,30 +239,25 @@
       </div><!-- container -->
     </div><!-- slim-navbar -->
 
-    <div class="slim-mainpanel" style="position: relative;">
-        <div class="container">
-          <div class="slim-pageheader">
-            <ol class="breadcrumb slim-breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-            </ol>
-            <h6 class="slim-pagetitle">@yield('title')</h6>
-          </div><!-- slim-pageheader -->
 
-          <div class="row row-xs">
-            @yield('content')
-          </div><!-- row -->
-        </div><!-- container -->
+
+            {{-- content --}}
+            <ng-view></ng-view>
+
+
+
       <div class="resize-sensor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: 0s; width: 100000px; height: 100000px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0;top:0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div>
 
 
     <div class="slim-footer">
       <div class="container">
-        <p>Copyright 2018 &copy; All Rights Reserved. Slim Dashboard Template</p>
-        <p>Designed by: <a href="#">ThemePixels</a></p>
+        <p>Copyright 2018 &copy; Ahmad Irfan Maulana</p>
+        <p>Designed by: <a href="#">Eksdi Studio</a></p>
       </div><!-- container -->
     </div><!-- slim-footer -->
 
+    <script src="{{ asset('js/angular.min.js') }}"></script>
+    <script src="{{ asset('js/angular-route.js') }}"></script>
     <script src="{{ asset('admin/lib/jquery/js/jquery.js') }}"></script>
     <script src="{{ asset('admin/lib/popper.js/js/popper.js') }}"></script>
     <script src="{{ asset('admin/lib/bootstrap/js/bootstrap.js') }}"></script>
@@ -273,24 +267,8 @@
 
     <script src="{{ asset('admin/js/slim.js') }}"></script>
     <script src="{{ asset('admin/js/jquery.vmap.sampledata.js') }}"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
     <script>
-      $(function(){
-        'use strict'
-
-        $('#vmap').vectorMap({
-          map: 'world_en',
-          backgroundColor: '#fff',
-          color: '#ffffff',
-          hoverOpacity: 0.7,
-          selectedColor: '#666666',
-          enableZoom: true,
-          showTooltip: true,
-          scaleColors: ['#17A2B8', '#006491'],
-          values: sample_data,
-          normalizeFunction: 'polynomial'
-        });
-
-      });
     </script>
   </body>
 

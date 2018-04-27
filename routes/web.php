@@ -34,11 +34,13 @@ Route::get('/logged', function(){
 // dashboard
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
-  Route::get('/', 'DashboardController@index');
+  Route::get('/', 'DashboardController@main');
 
-  Route::get('/adventure', 'DashboardController@index');
+  Route::get('/index', 'DashboardController@index');
 
-  Route::get('/climbing', 'DashboardController@index');
+  Route::get('/adventure', 'AdventureController@index');
+
+  Route::get('/climbing', 'ClimbingController@index');
 
   Route::get('/posts', 'PostsController@index');
 
@@ -49,7 +51,17 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 // administrator
 Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () {
 
-  Route::get('/', 'AdministratorController@index');
+  Route::get('/', 'AdministratorController@main');
+  Route::get('/dashboard', 'AdministratorController@index');
+  Route::get('/destinations', 'AdministratorController@destinations');
+  Route::get('/destinations/new', 'AdministratorController@destinationsCreate');
+  Route::get('/packet-items', 'AdministratorController@packetItems');
+  Route::get('/packet-items/new', 'AdministratorController@packetItemsCreate');
+  Route::get('/packet-items/edit', 'AdministratorController@packetItemsEdit');
+  Route::get('/packet-items/delete', 'AdministratorController@packetItemsDelete');
+  Route::get('/posts', 'AdministratorController@posts');
+  Route::get('/steps', 'AdministratorController@steps');
+  Route::get('/users', 'AdministratorController@users');
 
 });
 
