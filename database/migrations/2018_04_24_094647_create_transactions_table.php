@@ -16,9 +16,8 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('packet_id');
-            $table->integer('user_id');
-            $table->integer('entry_user_id');
-            $table->enum('status', []);
+            $table->integer('user_id'); 
+            $table->enum('status', ['ordered', 'checked', 'payment', 'finish']);
             $table->string('proof', 100);
             $table->timestamps();
         });

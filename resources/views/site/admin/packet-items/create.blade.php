@@ -1,35 +1,51 @@
-@extends('layouts.template_dashboard')
-
-@section('title')
-  New Packet Item
-@endsection
-
-@section('content')
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header d-flex align-items-center justify-content-between pd-y-5 bd-b">
-          <h6 class="mg-b-0 tx-14 tx-inverse"><i class="ion ion-ios-paper-outline"></i> FORM NEW PACKET ITEM</h6>
-          <div class="card-option tx-24">
-            <a href="#" class="tx-gray-600 mg-l-10"><i class="icon ion-ios-refresh-empty lh-0"></i></a>
-            <a href="#" class="tx-gray-600 mg-l-10"><i class="icon ion-android-more-vertical lh-0"></i></a>
-          </div><!-- card-option -->
+<div id="form-modal" class="modal fade effect-scale">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content tx-size-sm">
+        <form name="form" method="post">
+        <div class="modal-header pd-x-20">
+          <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">NEW PACKET ITEM</h6>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="card-body">
-            <div class="form-layout form-layout-3">
-              <div class="row no-gutters">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="Enter Packet Item Name (required)" ng-model="packetItems.name">
+        <div class="modal-body pd-20">
+
+          {{-- form --}}
+          <div class="form-layout form-layout-2">
+            <div class="row no-gutters">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-control-label">Icon Packet Item : <span class="tx-danger">*</span></label>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="icon">
+                    <label class="custom-file-label custom-file-label-primary" for="icon">Choose file</label>
                   </div>
-                </div><!-- col-4 -->
+                </div>
+              </div><!-- col-4 -->
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-control-label">Name Packet Item : <span class="tx-danger">*</span></label>
+                  <input id="name" class="form-control" type="text" name="name" value="" placeholder="Enter Name Packet Item" ng-model="data.name">
+                  <small id="packet-item-name-error"></small>
+                </div>
+              </div><!-- col-4 -->
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-control-label">About Paket Item : <span class="tx-danger">*</span></label>
+                  <textarea id="about-item" name="about_item" rows="8" cols="80" class="form-control" placeholder="About This Item" ng-model="data.about_item"></textarea>
+                </div>
+              </div><!-- col-4 -->
+            </div><!-- row -->
+          </div>
+          {{-- form --}}
 
-              </div><!-- row -->
-              <div class="form-layout-footer bd pd-20 bd-t-0">
-                <button class="btn btn-primary bd-0" ng-click="packetItems.create()"><i class="fa fa-save"></i> Save</button>
-                <button link ng-click="goTo('packet-items')" class="btn btn-secondary bd-0">Cancel</button>
-              </div><!-- form-group -->
-            </div><!-- form-layout -->
         </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary pull-left" ng-click="action.save.run()"><i class="fa fa-save"></i> Save</button>
+          <button type="button" class="btn btn-primary pull-left" ng-click="action.save.run('andClose')"><i class="fa fa-save"></i> Save & Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+        </div>
+      </form>
       </div>
-    </div>
-@endsection
+    </div><!-- modal-dialog -->
+</div><!-- modal -->

@@ -15,8 +15,7 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('type', ['destinations']);
-            $table->integer('origin_id');
+            $table->integer('destination_id');
             $table->string('file_name');
             $table->integer('file_size');
             $table->timestamps();

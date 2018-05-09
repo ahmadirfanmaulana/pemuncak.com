@@ -13,11 +13,10 @@ class CreatePacketsTable extends Migration
      */
 
     public function up()
-    {    
+    {
         Schema::create('packets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('destination_id');
-            $table->enum('type', ['hiking', 'camping', 'all']);
+            $table->integer('destination_id'); 
             $table->text('description');
             $table->integer('count_adults');
             $table->integer('count_kids');

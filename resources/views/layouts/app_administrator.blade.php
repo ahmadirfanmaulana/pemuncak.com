@@ -13,16 +13,19 @@
 
     <title>Pemuncak.com | Administrator - @yield('title')</title>
 
+    {{-- favicon --}}
+    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <!-- Font Awesome Stylesheet -->
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <!-- Flaticon Stylesheet -->
     <link rel="stylesheet" href="{{ asset('fonts/font/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
     <link href="{{ asset('css/fonts/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/lib/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/lib/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('admin/lib/datatables/css/jquery.dataTables.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/angular-datatables.css') }}">
     <link href="{{ asset('admin/lib/select2/css/select2.min.css') }}" rel="stylesheet">
 
     <!-- Slim CSS -->
@@ -204,8 +207,8 @@
       <div class="slim-navbar" ng-controller="navbar">
         <div class="container">
           <ul class="nav">
-            <li class="nav-item" id="nav-dashboard">
-              <a class="nav-link pointer" ng-click="goTo('')">
+            <li class="nav-item  @yield('menu_dashboard')" id="nav-dashboard">
+              <a class="nav-link pointer" href="{{ route('admin') }}">
                 <i class="icon ion-ios-pie"></i>
                 <span>Dashboard</span>
               </a>
@@ -220,44 +223,92 @@
                 </ul>
               </div><!-- sub-item --> --}}
             </li>
-            <li class="nav-item" id="nav-destinations">
-              <a class="nav-link pointer" ng-click="goTo('destinations')">
+            <li class="nav-item @yield('menu_destinations')" id="nav-destinations">
+              <a class="nav-link pointer" href="{{ route('admin_destinations') }}">
                 <i class="icon ion-flag"></i>
                 <span>Destinations</span>
               </a>
             </li>
-            <li class="nav-item" id="nav-packetItems">
-              <a class="nav-link pointer" ng-click="goTo('packet-items')">
+            <li class="nav-item @yield('menu_packet-items')">
+              <a class="nav-link pointer" href="{{ route('admin_packet-items') }}">
                 <i class="icon ion-filing"></i>
                 <span>Packet Items</span>
               </a>
             </li>
-            <li class="nav-item" id="nav-posts">
-              <a class="nav-link pointer" ng-click="goTo('potst')">
+            <li class="nav-item @yield('menu_posts')" id="nav-posts">
+              <a class="nav-link pointer" href="{{ route('admin_posts') }}">
                 <i class="icon ion-android-list"></i>
                 <span>Post</span>
               </a>
             </li>
-            <li class="nav-item" id="nav-steps">
-              <a class="nav-link pointer" ng-click="goTo('steps')">
+            <li class="nav-item  @yield('menu_steps')" id="nav-steps">
+              <a class="nav-link pointer" href="{{ route('admin_steps') }}">
                 <i class="icon ion ion-android-done-all"></i>
                 <span>Steps</span>
               </a>
             </li>
-            <li class="nav-item" id="nav-users">
-              <a class="nav-link pointer" ng-click="goTo('users')">
+            <li class="nav-item @yield('menu_users')" id="nav-users">
+              <a class="nav-link pointer" href="{{ route('admin_climbers') }}">
                 <i class="icon ion ion-android-contacts"></i>
-                <span>Users</span>
+                <span>Climbers</span>
               </a>
             </li>
           </ul>
         </div><!-- container -->
       </div><!-- slim-navbar -->
 
+      <div class="slim-mainpanel" style="position: relative;" @yield('clientAttr')>
+          <div class="container">
+            <div class="slim-pageheader">
+              <ol class="breadcrumb slim-breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+              </ol>
+              <h6 class="slim-pagetitle">@yield('title')</h6>
+            </div><!-- slim-pageheader -->
+
+            <div class="row row-sm">
+
+              @yield('content')
+
+            </div><!-- row -->
+          </div><!-- container -->
+
+          @yield('modal')
 
 
-              {{-- content --}}
-              <ng-view></ng-view>
+          <div id="success-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content tx-size-sm">
+                <div class="modal-body tx-center pd-y-20 pd-x-20">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <i class="icon ion-ios-checkmark-outline tx-100 tx-success lh-1 mg-t-20 d-inline-block"></i>
+                  <h4 class="tx-success tx-semibold mg-b-20" id="success-modal-title">Congratulations!</h4>
+                  <p class="mg-b-20 mg-x-20" id="success-modal-text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
+                  <button type="button" class="btn btn-success pd-x-25" data-dismiss="modal" aria-label="Close">Continue</button>
+                </div><!-- modal-body -->
+              </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+          </div><!-- modal -->
+
+          <div id="error-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content tx-size-sm">
+                <div class="modal-body tx-center pd-y-20 pd-x-20">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <i class="icon icon tx-100 tx-danger lh-1 mg-t-20 d-inline-block" id="error-modal-icon"></i>
+                  <h4 class="tx-danger mg-b-20" id="error-modal-title">Error: Cannot process your entry!</h4>
+                  <p class="mg-b-20 mg-x-20" id="error-modal-text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
+                  <button type="button" class="btn btn-danger pd-x-25" data-dismiss="modal" aria-label="Close">Continue</button>
+                </div><!-- modal-body -->
+              </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+          </div><!-- modal -->
+        </div>
 
 
 
@@ -273,24 +324,8 @@
     </div><!-- slim-footer -->
 
 
-    {{-- modal --}}
-    <!-- MODAL ALERT MESSAGE -->
-    <div id="modaldemo4" class="modal fade">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content tx-size-sm">
-          <div class="modal-body tx-center pd-y-20 pd-x-20">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <i class="icon ion-ios-checkmark-outline tx-100 tx-success lh-1 mg-t-20 d-inline-block"></i>
-            <h4 class="tx-success tx-semibold mg-b-20">Congratulations!</h4>
-            <p class="mg-b-20 mg-x-20">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
-            <button type="button" class="btn btn-success pd-x-25" data-dismiss="modal" aria-label="Close">Continue</button>
-          </div><!-- modal-body -->
-        </div><!-- modal-content -->
-      </div><!-- modal-dialog -->
-    </div><!-- modal -->
-
+    <script src="{{ asset('js/angular.min.js') }}"></script>
+    <script src="{{ asset('js/angular-route.js') }}"></script>
     <script src="{{ asset('admin/lib/jquery/js/jquery.js') }}"></script>
     <script src="{{ asset('admin/lib/popper.js/js/popper.js') }}"></script>
     <script src="{{ asset('admin/lib/bootstrap/js/bootstrap.js') }}"></script>
@@ -298,16 +333,18 @@
     <script src="{{ asset('admin/lib/jqvmap/js/jquery.vmap.min.js') }}"></script>
     <script src="{{ asset('admin/lib/jqvmap/js/jquery.vmap.world.js') }}"></script>
     <script src="{{ asset('admin/lib/jquery.cookie/js/jquery.cookie.js') }}"></script>
-    <script src="{{ asset('admin/lib/datatables/js/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('admin/lib/datatables-responsive/js/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }} "></script>
+    <script src="{{ asset('js/angular-datatables.js') }} "></script>
+    {{-- <script src="{{ asset('admin/lib/datatables-responsive/js/dataTables.responsive.js') }}"></script> --}}
     <script src="{{ asset('admin/lib/select2/js/select2.min.js') }}"></script>
-    <script src="{{ asset('js/angular.min.js') }}"></script>
-    <script src="{{ asset('js/angular-route.js') }}"></script>
+
 
 
     <script src="{{ asset('admin/js/slim.js') }}"></script>
     <script src="{{ asset('admin/js/jquery.vmap.sampledata.js') }}"></script>
     <script src="{{ asset('js/administrator.js') }}"></script>
+
+    @yield('javascript')
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMKPjMC5SZdrZ3bPCHMttBhsgUNM6auWk&libraries=places&callback=init" async defer></script> --}}
   </body>
 

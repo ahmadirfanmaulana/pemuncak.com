@@ -18,6 +18,7 @@
 
     <!-- Slim CSS -->
     <link rel="stylesheet" href="{{ asset('admin/css/slim.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
     <style media="screen">
       body{
@@ -42,25 +43,36 @@
             <h2 class="signin-title-primary">SIGN IN</h2>
             <h3 class="signin-title-secondary">Sign in to continue.</h3>
 
+            @if ($errors->any())
+              <div class="alert alert-danger animated shake">
+                <h4><i class="fa fa-warning"></i> Login Failed</h4>
+                <ul style="margin-left:0px;">
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+
             <div class="form-group">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Enter your Username" name="username" value="{{ old('username') }}">
 
               </div>
-              @if ($errors->has('username'))
-                  <span class="help-block">
-                      <strong>{{ $errors->first('username') }}</strong>
+              {{-- @if ($errors->has('username'))
+                  <span class="help-block text-danger">
+                      <strong><i class="fa fa-warning"></i> {{ $errors->first('username') }}</strong>
                   </span>
-              @endif
+              @endif --}}
             </div><!-- form-group -->
             <div class="form-group mg-b-50">
               <input type="password" class="form-control" placeholder="Enter your password" name="password">
-            </div><!-- form-group -->
-            @if ($errors->has('password'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('password') }}</strong>
+              {{-- @if ($errors->has('password'))
+                <span class="help-block text-danger">
+                  <strong><i class="fa fa-warning"></i> {{ $errors->first('password') }}</strong>
                 </span>
-            @endif
+              @endif --}}
+            </div><!-- form-group -->
             <button class="btn btn-primary btn-block btn-signin" type="submit" value="submit" name="submit">Sign In</button>
             <p class="mg-b-0">New in here ? <a href="{{ url('register') }}">Sign Up</a></p>
           </div>

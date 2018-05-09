@@ -1,7 +1,15 @@
-@extends('layouts.template_dashboard')
+@extends('layouts.app_administrator')
 
 @section('title')
   Dashboard
+@endsection
+
+@section('menu_' . $menu_active)
+  active
+@endsection
+
+@section('clientAttr')
+  ng-controller="Dashboard"
 @endsection
 
 @section('content')
@@ -10,7 +18,7 @@
       <div class="media">
         <i class="icon ion-flag tx-purple"></i>
         <div class="media-body">
-          <h1>27</h1>
+          <h1>{{ $data['count_destinations'] }}</h1>
           <p>Destinations</p>
         </div><!-- media-body -->
       </div><!-- media -->
@@ -21,7 +29,7 @@
       <div class="media">
         <i class="icon icon ion-android-list tx-teal"></i>
         <div class="media-body">
-          <h1>447</h1>
+          <h1>{{ $data['count_posts'] }}</h1>
           <p>Total Posts</p>
         </div><!-- media-body -->
       </div><!-- media -->
@@ -32,7 +40,7 @@
       <div class="media">
         <i class="icon ion ion-android-done-all tx-primary"></i>
         <div class="media-body">
-          <h1>15</h1>
+          <h1>{{ $data['count_steps'] }}</h1>
           <p>Total Steps</p>
         </div><!-- media-body -->
       </div><!-- media -->
@@ -43,7 +51,7 @@
       <div class="media">
         <i class="icon ion ion-android-contacts tx-pink"></i>
         <div class="media-body">
-          <h1>156</h1>
+          <h1>{{ $data['count_users'] }}</h1>
           <p>Total Users</p>
         </div><!-- media-body -->
       </div><!-- media -->

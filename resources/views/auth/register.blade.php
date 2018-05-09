@@ -23,6 +23,7 @@
       body{
         background: url('{{ asset('images/destination-2.jpg') }}');
         background-size: cover;
+        background-attachment: fixed;
       }
       .flaticon-people:before{
         font-size: 40px;

@@ -4,6 +4,10 @@
   Home
 @endsection
 
+@section('menu-' . $menu_active)
+  active
+@endsection
+
 @section('content')
   <section class="flexslider-container" id="flexslider-container-4">
 

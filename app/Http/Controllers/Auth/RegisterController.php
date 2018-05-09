@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'photo' => 'default.png',
             'address' => '',
             'point' => 0,
-            'level' => 1,
+            'level' => 'climber',
 
 
             // account

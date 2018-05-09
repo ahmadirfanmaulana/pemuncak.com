@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,59 +11,65 @@
 */
 
 // landing page
-Route::get('/', 'LandingController@home');
+Route::get('/', 'LandingController@home')->name('home');
 Route::get('/adventures', 'LandingController@adventures');
-Route::get('/destinations', 'LandingController@destinations');
+Route::get('/destinations', 'LandingController@destinations')->name('destination');
+Route::get('/destinations/detail/{id}', 'LandingController@destinationsDetail')->name('destination_detail');
 Route::get('/camping', 'LandingController@camping');
 Route::get('/blog', 'LandingController@blog');
 Route::get('/news', 'LandingController@news');
 Route::get('/about', 'LandingController@about');
 Route::get('/faq', 'LandingController@faq');
 
-// logged
-Route::get('/logged', function(){
-  if (Auth::user()->level == 'admin') {
-    return redirect('/administrator');
-  }
-  else {
-    return redirect('/dashboard');
-  }
+
+Route::group(['middleware' => 'auth'], function(){
+
+  // logged
+  Route::get('/logged', function(){
+    if (Auth::user()->level == 'admin') {
+      return redirect('/administrator');
+    }
+    else {
+      return redirect('/climber');
+    }
+  })->name('logged');
+
+  // dashboard user
+  Route::group(['prefix' => 'climber', 'middleware' => 'climber'], function () {
+
+    Route::get('/', 'ClimberController@index')->name('climber');
+    Route::get('/adventure', 'ClimberController@adventure')->name('climber_adventure');
+    Route::get('/climbing', 'ClimberController@climbing')->name('climber_climbing');
+    Route::get('/posts', 'ClimberController@posts')->name('climber_posts');
+    Route::get('/packets', 'ClimberController@packets')->name('climber_packets');
+
+  });
+
+  // administrator
+  Route::group(['prefix' => 'administrator', 'middleware' => 'admin'], function () {
+
+    Route::get('/', 'AdministratorController@index')->name('admin');
+    Route::get('/destinations', 'AdministratorController@destinations')->name('admin_destinations');
+    Route::get('/destinations/home', function(){
+      return view('site.admin.destinations.home');
+    });
+    Route::get('/destinations/edit', function(){
+      return view('site.admin.destinations.edit');
+    });
+    Route::get('/packet-items', 'AdministratorController@packetItems')->name('admin_packet-items');
+    Route::get('/posts', 'AdministratorController@posts')->name('admin_posts');
+    Route::get('/steps', 'AdministratorController@steps')->name('admin_steps');
+    Route::get('/climbers', 'AdministratorController@users')->name('admin_climbers');
+
+
+  });
+
 });
 
-// dashboard
-Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
-
-  Route::get('/', 'DashboardController@main');
-
-  Route::get('/index', 'DashboardController@index');
-
-  Route::get('/adventure', 'AdventureController@index');
-
-  Route::get('/climbing', 'ClimbingController@index');
-
-  Route::get('/posts', 'PostsController@index');
-
-  Route::get('/packets', 'PacketsController@index');
-
+Route::middleware('auth')->get('/me', function(){
+  return response(Auth::user());
 });
 
-// administrator
-Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () {
 
-  Route::get('/', 'AdministratorController@main');
-  Route::get('/dashboard', 'AdministratorController@index');
-  Route::get('/destinations', 'AdministratorController@destinations');
-  Route::get('/destinations/new', 'AdministratorController@destinationsCreate');
-  Route::get('/packet-items', 'AdministratorController@packetItems');
-  Route::get('/packet-items/new', 'AdministratorController@packetItemsCreate');
-  Route::get('/packet-items/edit', 'AdministratorController@packetItemsEdit');
-  Route::get('/packet-items/delete', 'AdministratorController@packetItemsDelete');
-  Route::get('/posts', 'AdministratorController@posts');
-  Route::get('/steps', 'AdministratorController@steps');
-  Route::get('/users', 'AdministratorController@users');
-
-});
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

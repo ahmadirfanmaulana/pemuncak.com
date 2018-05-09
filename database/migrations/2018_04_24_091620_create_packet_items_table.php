@@ -16,7 +16,8 @@ class CreatePacketItemsTable extends Migration
         Schema::create('packet_items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('icon');
-            $table->string('name'); 
+            $table->string('name');
+            $table->text('description'); 
             $table->timestamps();
         });
     }

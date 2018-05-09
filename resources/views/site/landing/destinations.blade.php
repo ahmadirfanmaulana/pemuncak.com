@@ -4,6 +4,10 @@
   Adventures
 @endsection
 
+@section('menu-' . $menu_active)
+  active
+@endsection
+
 @section('content')
   <section class="page-cover style cover-navbar-wrapper pt-164" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(../images/destination-1.jpg) 50% 60%;">
       <div class="container">
@@ -309,12 +313,12 @@
 
                 <div class="row">
 
-                    @for ($i=0; $i < 12; $i++)
+                  @foreach ($data['destinations'] as $destination)
                       <div class="col-sm-6 col-md-6 col-lg-4">
                           <div class="grid-block main-block t-grid-block">
                           	<div class="main-img t-grid-img">
                               	<a href="tour-detail-right-sidebar.html">
-                          			<img src="images/destination-3.jpg" class="img-responsive" alt="hotel-img">
+                          			<img src="{{ asset('upload/img/destinations/poster/' . $destination->poster) }}" class="img-responsive" alt="hotel-img" style="height: 150px; object-fit: cover;">
                                   </a>
                                   <div class="main-mask">
                                       <ul class="list-unstyled list-inline offer-price-1">
@@ -323,25 +327,25 @@
                                   </div><!-- end main-mask -->
                           	</div><!-- end t-grid-img -->
 
-                               <div class="block-info t-grid-info">
-                               	<div class="rating">
-                                      <span><i class="fa fa-star orange"></i></span>
-                                      <span><i class="fa fa-star orange"></i></span>
-                                      <span><i class="fa fa-star orange"></i></span>
-                                      <span><i class="fa fa-star orange"></i></span>
-                                      <span><i class="fa fa-star lightgrey"></i></span>
-                                  </div><!-- end rating -->
+                            <div class="block-info t-grid-info" style="height:250px;position:relative;">
+                             	<div class="rating">
+                                <span><i class="fa fa-star orange"></i></span>
+                                <span><i class="fa fa-star orange"></i></span>
+                                <span><i class="fa fa-star orange"></i></span>
+                                <span><i class="fa fa-star orange"></i></span>
+                                <span><i class="fa fa-star lightgrey"></i></span>
+                              </div><!-- end rating -->
 
-                               	<h3 class="block-title"><a href="tour-detail-right-sidebar.html">Papandayan</a></h3>
-                                  <p class="block-minor"><i class="fa fa-map-marker" style="margin-right:5px;padding-top:15px;padding-bottom:10px;"></i> Subang, West Java</p>
-                                  <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei </p>
-                                  <div class="grid-btn">
-                                  	<a href="tour-detail-right-sidebar.html" class="btn btn-orange btn-block btn-lg"><i class="fa fa-search"></i> See Detail</a>
-                                  </div><!-- end grid-btn -->
-                               </div><!-- end t-grid-info -->
+                           	  <h3 class="block-title text-capitalize"><a href="tour-detail-right-sidebar.html">{{ $destination->name }}</a></h3>
+                              <p class="block-minor"><i class="fa fa-map-marker" style="margin-right:5px;padding-top:15px;padding-bottom:10px;"></i> {{ $destination->regional->name }}, {{ $destination->province->name }}</p>
+                              <p>{{ $destination->about }} </p>
+                              <div class="grid-btn" style="position:absolute; bottom:19px; width: calc(100% - 38px);">
+                              	<a href="{{ route('destination_detail', ['id' => $destination->id]) }}" class="btn btn-orange btn-block btn-lg"><i class="fa fa-search"></i> See Detail</a>
+                              </div><!-- end grid-btn -->
+                            </div><!-- end t-grid-info -->
                           </div><!-- end t-grid-block -->
                       </div><!-- end columns -->
-                    @endfor
+                    @endforeach
 
                 </div><!-- end row -->
 

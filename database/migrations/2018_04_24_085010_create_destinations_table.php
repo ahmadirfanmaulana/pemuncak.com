@@ -16,12 +16,15 @@ class CreateDestinationsTable extends Migration
         Schema::create('destinations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
+            $table->integer('regional_id');
+            $table->integer('province_id');
+            $table->text('full_address');
             $table->string('poster', 100);
+            $table->string('map', 100);
             $table->float('lat');
             $table->float('lng');
-            $table->integer('province_id');
-            $table->integer('regional_id');
-            $table->text('full_address');
+            $table->string('preview', 100);
+            $table->text('about');
             $table->timestamps();
         });
     }

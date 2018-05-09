@@ -4,6 +4,10 @@
   Adventures
 @endsection
 
+@section('menu-' . $menu_active)
+  active
+@endsection
+
 @section('content')
   <section class="page-cover style cover-navbar-wrapper pt-164" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(../images/destination-3.jpg) 50% 60%;">
       <div class="container">

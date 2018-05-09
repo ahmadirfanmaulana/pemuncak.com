@@ -15,8 +15,8 @@ class CreatePacketSelectsTable extends Migration
     {
         Schema::create('packet_selects', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('packets_id');
-            $table->integer('packets_item_id');
+            $table->integer('packet_id');
+            $table->integer('packet_item_id');
             $table->text('description');
             $table->timestamps();
         });

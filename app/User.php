@@ -27,4 +27,19 @@ class User extends Authenticatable
     ];
 
     public $timestamps = true;
+
+    public function adventure()
+    {
+      return $this->hasMany('App\Adventure');
+    }
+
+    public function post()
+    {
+      return $this->hasMany('App\Post');
+    }
+
+    public function transaction()
+    {
+      return $this->hasMany('App\Transaction');
+    }
 }

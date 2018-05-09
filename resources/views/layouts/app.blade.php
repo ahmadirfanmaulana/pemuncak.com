@@ -93,10 +93,10 @@
                         <div id="links">
                             <ul class="list-unstyled list-inline">
                                 @if (Auth::guest())
-                                  <li><a href="{{ url('login') }}"><span><i class="fa fa-lock"></i></span>Login</a></li>
-                                  <li><a href="{{ url('register') }}"><span><i class="fa fa-plus"></i></span>Sign Up</a></li>
+                                  <li><a href="{{ route('login') }}"><span><i class="fa fa-lock"></i></span>Login</a></li>
+                                  <li><a href="{{ route('register') }}"><span><i class="fa fa-plus"></i></span>Sign Up</a></li>
                                 @else
-                                  <li><a href="{{ url('dashboard') }}"> <i class="fa fa-user-circle"></i></span>{{ Auth::user()->first_name }}</a> </a></li>
+                                  <li><a href="{{ route('logged') }}"> <i class="fa fa-user-circle"></i></span>{{ Auth::user()->first_name }}</a> </a></li>
                                   <li>
                                       <ul class="list-inline">
 
@@ -146,39 +146,25 @@
 
                         <div class="collapse navbar-collapse" id="myNavbar1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="@if ($pageActive == "home")
-                                  {{ "active" }}
-                                @endif">
+                                <li class="@yield('menu-home')">
                                   <a href="{{ url('') }}">Home</a>
                                 </li>
-                                <li class="@if ($pageActive == "adventures")
-                                  {{ "active" }}
-                                @endif">
+                                <li class="@yield('menu-adventures')">
                                   <a href="{{ url('adventures') }}">Adventures</a>
                                 </li>
-                                <li class="@if ($pageActive == "destinations")
-                                  {{ "active" }}
-                                @endif">
+                                <li class="@yield('menu-destinations')">
                                   <a href="{{ url('destinations') }}">Destinations</a>
                                 </li>
-                                <li class="@if ($pageActive == "camping")
-                                  {{ "active" }}
-                                @endif">
+                                <li class="@yield('menu-camping')">
                                   <a href="{{ url('camping') }}">camping</a>
                                 </li>
-                                <li class="@if ($pageActive == "news")
-                                  {{ "active" }}
-                                @endif">
+                                <li class="@yield('menu-news')">
                                   <a href="{{ url('news') }}">News</a>
                                 </li>
-                                <li class="@if ($pageActive == "blog")
-                                  {{ "active" }}
-                                @endif">
+                                <li class="@yield('menu-blog')">
                                   <a href="{{ url('blog') }}">Blog</a>
                                 </li>
-                                <li class="@if ($pageActive == "about")
-                                  {{ "active" }}
-                                @endif">
+                                <li class="@yield('menu-about')">
                                   <a href="{{ url('about') }}">About</a>
                                 </li>
                                 {{-- <li>

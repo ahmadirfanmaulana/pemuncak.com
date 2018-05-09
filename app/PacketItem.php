@@ -8,5 +8,11 @@ class PacketItem extends Model
 {
     //
     protected $table = 'packet_items';
-    protected $guarded = [];
+    protected $guarded = []; 
+
+    public function packetSelect()
+    {
+      return $this->hasMany('App\PacketSelect');
+    }
+
 }
