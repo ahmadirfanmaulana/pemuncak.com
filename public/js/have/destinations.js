@@ -223,8 +223,10 @@ admin.controller('Destination', function($scope, $destination, $helper, $action,
           text: response.data.message
         });
         $helper.modal('delete', 'close');
-
+        // 
         $scope.action.load();
+        //
+        $scope.action.paging();
       });
 
   };

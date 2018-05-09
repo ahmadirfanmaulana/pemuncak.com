@@ -85,7 +85,7 @@
       <ul class="pagination pagination-circle mg-b-0">
 
         <li class="page-item">
-          <a class="page-link" href="" aria-label="Next" ng-click="data.offset = data.offset - data.limit">
+          <a class="page-link" href="" aria-label="Next" ng-click="data.offset = data.offset - data.limit" ng-if="data.offset > 0">
             <i class="fa fa-angle-left"></i>
           </a>
         </li>
