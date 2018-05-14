@@ -22,6 +22,7 @@
 
         <!-- Flaticon Stylesheet -->
         <link rel="stylesheet" href="{{ asset('fonts/font/flaticon.css') }}">
+        <link href="{{ asset('css/fonts/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
 
         <!-- Custom Stylesheets -->
         <link rel="stylesheet" id="cpswitch" href="{{ asset('css/orange.css') }}">

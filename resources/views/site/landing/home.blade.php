@@ -196,13 +196,17 @@
 
                            <div class="offer-price-2">
                              <ul class="list-unstyled">
-                               <li class="price">$568.00<a href="{{ route('destination_detail', ['id' => $favdes->id]) }}" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
+                               <li class="price">
+                                 12 <span class="text-muted">Steps</span>
+                                 <a href="{{ route('destination_detail', ['id' => $favdes->id]) }}" class="btn btn-orange btn-sm pull-right" style="margin-top: -5px">
+                                   <i class="fa fa-search"></i> See Detail
+                                 </a></li>
                              </ul>
                            </div><!-- end offer-price-2 -->
 
                            <div class="main-info tour-info">
                              <div class="main-title tour-title">
-                               <a href="tour-detail-right-sidebar.html">{{ $favdes->name }}</a>
+                               <a href="{{ route('destination_detail', ['id' => $favdes->id]) }}">{{ $favdes->name }}</a>
                                <p>
                                  <i class="fa fa-map-marker"></i>
                                  {{ $favdes->regional->name . " - " . $favdes->province->name }}
@@ -469,12 +473,12 @@
                           <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                               <div class="highlight-box">
                                   <div class="h-icon">
-                                      <span><i class="fa fa-plane"></i></span>
+                                      <span><i class="icon ion ion-android-contacts"></i></span>
                                   </div><!-- end h-icon -->
 
                                   <div class="h-text">
-                                      <span class="numbers">2496</span>
-                                      <p>Outstanding Tours</p>
+                                      <span class="numbers">{{ $data['count_climbers'] }}</span>
+                                      <p>Climbers</p>
                                   </div><!-- end h-text -->
                               </div><!-- end highlight-box -->
                           </div><!-- end columns -->
@@ -482,12 +486,12 @@
                           <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                               <div class="highlight-box">
                                   <div class="h-icon">
-                                      <span><i class="fa fa-ship"></i></span>
+                                      <span><i class="icon ion-flag"></i></span>
                                   </div><!-- end h-icon -->
 
                                   <div class="h-text cruise">
-                                      <span class="numbers">1906</span>
-                                      <p>Worldwide Cruise</p>
+                                      <span class="numbers">{{ $data['count_destinations'] }}</span>
+                                      <p>Destinations</p>
                                   </div><!-- end h-text -->
                               </div><!-- end highlight-box -->
                           </div><!-- end columns -->
@@ -499,8 +503,8 @@
                                   </div><!-- end h-icon -->
 
                                   <div class="h-text taxi">
-                                      <span class="numbers">2033</span>
-                                      <p>Luxury Car Booking</p>
+                                      <span class="numbers">{{ $data['count_adventures'] }}</span>
+                                      <p>Adventured</p>
                                   </div><!-- end h-text -->
                               </div><!-- end highlight-box -->
                           </div><!-- end columns -->

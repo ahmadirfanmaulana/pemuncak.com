@@ -4,17 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Destination;
+use App\User;
+use App\Adventure;
 
 class LandingController extends Controller
 {
-    public function __construct(Destination $destinations)
+    public function __construct(Destination $destinations, User $users, Adventure $adventures)
     {
       $this->destinations = $destinations;
+      $this->adventures = $adventures;
+      $this->users = $users;
     }
     public function home()
     {
       $data = array(
-        'favorite_destinations' => $this->destinations->with(['province', 'regional'])->get()
+        'favorite_destinations' => $this->destinations->with(['province', 'regional'])->get(),
+        'count_climbers' => $this->users->where('level', 'climber')->count(),
+        'count_destinations' => $this->destinations->count(),
+        'count_adventures' => $this->adventures->count(),
       );
 
       return view('site.landing.home')

@@ -13,6 +13,8 @@
 
     <title>Pemuncak.com | Dashboad - @yield('title')</title>
 
+    {{-- favicon --}}
+    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     <!-- Font Awesome Stylesheet -->
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <!-- Flaticon Stylesheet -->

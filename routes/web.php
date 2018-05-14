@@ -37,7 +37,8 @@ Route::group(['middleware' => 'auth'], function(){
   // dashboard user
   Route::group(['prefix' => 'climber', 'middleware' => 'climber'], function () {
 
-    Route::get('/', 'ClimberController@index')->name('climber');
+    Route::get('/', function(){ return redirect()->route('climber_dashboard'); })->name('climber');
+    Route::get('/dashboard', 'ClimberController@index')->name('climber_dashboard');
     Route::get('/adventure', 'ClimberController@adventure')->name('climber_adventure');
     Route::get('/climbing', 'ClimberController@climbing')->name('climber_climbing');
     Route::get('/posts', 'ClimberController@posts')->name('climber_posts');
