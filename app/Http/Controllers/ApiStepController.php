@@ -104,4 +104,9 @@ class ApiStepController extends Controller
 
         return response([ 'message' => 'Step Deleted Successfully !' ]);
     }
+
+    public function count()
+    {
+      return response($this->steps->count());
+    }
 }

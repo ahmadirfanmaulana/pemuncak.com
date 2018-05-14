@@ -15,8 +15,8 @@ class ApiPostController extends Controller
      */
     public function __construct(Post $posts, Request $requests)
     {
-      $this->posts = $this->postss;
-      $this->requests = $this->requestss;
+      $this->posts = $posts;
+      $this->requests = $requests;
     }
     public function index()
     {
@@ -78,7 +78,7 @@ class ApiPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $this->requests, $id)
+    public function update($id)
     {
         //
         $this->posts->find($this->requests->id)->update($this->requests->all());
@@ -98,5 +98,10 @@ class ApiPostController extends Controller
         $this->posts->destroy($this->requests->id);
 
         return response([ 'message' => 'Post Deleted Successfully !' ]);
+    }
+
+    public function count()
+    {
+      return response($this->posts->count());
     }
 }

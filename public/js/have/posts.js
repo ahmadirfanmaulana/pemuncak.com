@@ -11,7 +11,10 @@ admin.controller('Post', function($scope, $http, $location, $helper, $action, $p
   $scope.action.create = {};
   $scope.action.edit = {};
   $scope.action.trash = {};
-  $scope.action.method;
+  $scope.action.method = '';
+  $scope.data.limitSelect = [5, 10, 20, 30];
+  $scope.data.limit = $scope.data.limitSelect[0];
+  $scope.data.orderBy = '-id';
 
   // clear field
   $scope.clearField = function(){
@@ -21,14 +24,17 @@ admin.controller('Post', function($scope, $http, $location, $helper, $action, $p
   // get info from DB
   $scope.action.load = function(){
     $post.get().then(function(response){
-
       $scope.data.fromDB = response.data;
-
     });
   };
 
   // load
   $scope.action.load();
+
+  // count
+  $post.count().then(function(response){
+    $scope.data.count = response.data;
+  });
 
   // start create
   $scope.action.create.start = function(){
@@ -49,10 +55,14 @@ admin.controller('Post', function($scope, $http, $location, $helper, $action, $p
     $scope.data.field.user_id = 3;
 
     // user make
-    $user.me()
-    .then(function(response, scope = $scope.data.field){
-      scope.user_id = 1;
-    });
+    $scope.action.make_user = function make_user() {
+      $user.me()
+      .then(function(response){
+        response.data.user_id = 1;
+      });
+    };
+
+    $scope.action.make_user();
 
     // restoring
     $post.create($scope.data.field)
@@ -110,7 +120,7 @@ admin.controller('Post', function($scope, $http, $location, $helper, $action, $p
       $helper.modal('success', 'show', { text : response.data.message });
       $scope.action.load();
     }, function(response){
-      $helper.modal('error', 'show', { text : response.data })
+      $helper.modal('error', 'show', { text : response.data });
     });
 
     // close modal

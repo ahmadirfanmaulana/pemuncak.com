@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Destination;
 
 class LandingController extends Controller
@@ -36,20 +35,12 @@ class LandingController extends Controller
 
     public function destinationsDetail($id, Destination $destinations)
     {
-      $data = array(
-        'destination' => $destinations->find($id)->with(['province', 'regional'])->first()
-      );
+      $data = $destinations->where('id', $id)->with(['province', 'regional'])->first();
 
       return view('site.landing.destinations_detail')
       ->with('menu_active', 'destinations')
       ->with('data', $data);
-    }
-
-    public function campings()
-    {
-      return view('site.landing.campings')
-      ->with('menu_active', 'campings');
-    }
+    } 
 
     public function blog()
     {

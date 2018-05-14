@@ -14,7 +14,7 @@
 Route::get('/', 'LandingController@home')->name('home');
 Route::get('/adventures', 'LandingController@adventures');
 Route::get('/destinations', 'LandingController@destinations')->name('destination');
-Route::get('/destinations/detail/{id}', 'LandingController@destinationsDetail')->name('destination_detail');
+Route::get('/destinations/{id}/detail', 'LandingController@destinationsDetail')->name('destination_detail');
 Route::get('/camping', 'LandingController@camping');
 Route::get('/blog', 'LandingController@blog');
 Route::get('/news', 'LandingController@news');
@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/packet-items', 'AdministratorController@packetItems')->name('admin_packet-items');
     Route::get('/posts', 'AdministratorController@posts')->name('admin_posts');
     Route::get('/steps', 'AdministratorController@steps')->name('admin_steps');
-    Route::get('/climbers', 'AdministratorController@users')->name('admin_climbers');
+    Route::get('/climbers', 'AdministratorController@climbers')->name('admin_climbers');
 
 
   });

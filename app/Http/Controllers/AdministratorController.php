@@ -78,10 +78,11 @@ class AdministratorController extends Controller
       ->with('menu_active', 'steps');
     }
 
-    // users
-    public function users()
+    // climbers
+    public function climbers()
     {
-      return view('site.admin.users.home');
+      return view('site.admin.climbers.home')
+      ->with('menu_active', 'climbers');;
     }
 
 

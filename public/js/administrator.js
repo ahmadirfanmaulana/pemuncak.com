@@ -276,9 +276,39 @@ admin.factory('$step', function($config, $http){
   Step.update = function(data){
     return $http.post(Step.url + 'update', data);
   };
+  Step.count = function(){
+    return $http.get(Step.url + 'count');
+  };
 
   //
   return Step;
+
+});
+
+admin.factory('$climber', function($config, $http){
+
+  //
+  var Climber = {};
+
+  //
+  Climber.url = $config.baseUrl + 'api/' + 'climbers/';
+
+  //
+  Climber.get = function(){
+    return $http.get(Climber.url + 'get');
+  };
+  Climber.getWithData = function(data){
+    return $http.post(Climber.url + 'find', data);
+  };
+  Climber.delete = function(data){
+    return $http.post(Climber.url + 'delete', data);
+  };
+  Climber.count = function(){
+    return $http.get(Climber.url + 'count');
+  };
+
+  //
+  return Climber;
 
 });
 
@@ -305,6 +335,9 @@ admin.factory('$post', function($config, $http){
   };
   Post.update = function(data){
     return $http.post(Post.url + 'update', data);
+  };
+  Post.count = function(){
+    return $http.get(Post.url + 'count');
   };
 
   //
@@ -338,7 +371,7 @@ admin.factory('$user', function($config, $http){
   };
   User.me = function(){
     return $http.get($config.baseUrl + 'me');
-  }
+  };
 
   //
   return User;
@@ -409,7 +442,7 @@ admin.directive('ngLinkto', function() {
         controller: function($scope, $location, $helper){
           $scope.goTo = function(path){
             $location.path(path);
-          }
+          };
         }
    };
 });

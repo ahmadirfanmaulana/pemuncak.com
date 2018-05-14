@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  Adventures
+  Destinations - {{ $data->name }}
 @endsection
 
 @section('menu-' . $menu_active)
@@ -13,10 +13,11 @@
       <div class="container">
           <div class="row">
               <div class="col-sm-12">
-                <h1 class="page-title">Tour Detail Left Sidebar</h1>
+                <h1 class="page-title">{{ $data->name }}</h1>
                   <ul class="breadcrumb">
-                      <li><a href="#">Home</a></li>
-                      <li class="active">Tour Detail Left Sidebar</li>
+                      <li><a href="{{ route('home') }}">Home</a></li>
+                      <li><a href="{{ route('destination') }}">Destinations</a></li>
+                      <li class="active">{{ $data->name }}</li>
                   </ul>
               </div><!-- end columns -->
           </div><!-- end row -->
@@ -105,56 +106,25 @@
 
                           </div><!-- end booking-form -->
                       </div><!-- end side-bar-block -->
-
-                      <div class="row">
-                          <div class="col-xs-12 col-sm-6 col-md-12">
-                              <div class="side-bar-block main-block ad-block">
-                                  <div class="main-img ad-img">
-                                      <a href="#">
-                                          <img src="images/car-ad.jpg" class="img-responsive" alt="car-ad" />
-                                          <div class="ad-mask">
-                                              <div class="ad-text">
-                                                  <span>Luxury</span>
-                                                  <h2>Car</h2>
-                                                  <span>Offer</span>
-                                              </div><!-- end ad-text -->
-                                          </div><!-- end columns -->
-                                      </a>
-                                  </div><!-- end ad-img -->
-                              </div><!-- end side-bar-block -->
-                          </div><!-- end columns -->
-
-                          <div class="col-xs-12 col-sm-6 col-md-12">
-                              <div class="side-bar-block support-block">
-                                  <h3>Need Help</h3>
-                                  <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis. Est atqui timeam mnesarchum.</p>
-                                  <div class="support-contact">
-                                      <span><i class="fa fa-phone"></i></span>
-                                      <p>+1 123 1234567</p>
-                                  </div><!-- end support-contact -->
-                              </div><!-- end side-bar-block -->
-                          </div><!-- end columns -->
-
-                      </div><!-- end row -->
                   </div><!-- end columns -->
 
                   <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
 
                       <div class="detail-slider">
                           <div class="feature-slider">
-                              <div><img src="images/t-feature-1.jpg" class="img-responsive" alt="feature-img"/></div>
-                              <div><img src="images/t-feature-2.jpg" class="img-responsive" alt="feature-img"/></div>
+                              @for ($i=0; $i < 5; $i++)
+                                <div><img src="{{ asset('upload/img/destinations/poster/' . $data->poster) }}" class="img-responsive" alt="feature-img" style="height: 500px; object-fit: cover;"/></div>
+                              @endfor
+                              {{-- <div><img src="images/t-feature-2.jpg" class="img-responsive" alt="feature-img"/></div>
                               <div><img src="images/t-feature-3.jpg" class="img-responsive" alt="feature-img"/></div>
                               <div><img src="images/t-feature-4.jpg" class="img-responsive" alt="feature-img"/></div>
-                              <div><img src="images/t-feature-5.jpg" class="img-responsive" alt="feature-img"/></div>
+                              <div><img src="images/t-feature-5.jpg" class="img-responsive" alt="feature-img"/></div> --}}
                           </div><!-- end feature-slider -->
 
                           <div class="feature-slider-nav">
-                              <div><img src="images/t-feature-thumb-1.jpg" class="img-responsive" alt="feature-thumb"/></div>
-                              <div><img src="images/t-feature-thumb-2.jpg" class="img-responsive" alt="feature-thumb"/></div>
-                              <div><img src="images/t-feature-thumb-3.jpg" class="img-responsive" alt="feature-thumb"/></div>
-                              <div><img src="images/t-feature-thumb-4.jpg" class="img-responsive" alt="feature-thumb"/></div>
-                              <div><img src="images/t-feature-thumb-5.jpg" class="img-responsive" alt="feature-thumb"/></div>
+                            @for ($i=0; $i < 5; $i++)
+                              <div><img src="{{ asset('upload/img/destinations/poster/' . $data->poster) }}" class="img-responsive" style="height: 100px; object-fit: cover;" alt="feature-thumb"/></div>
+                            @endfor
                           </div><!-- end feature-slider-nav -->
 
                           <ul class="list-unstyled features tour-features">

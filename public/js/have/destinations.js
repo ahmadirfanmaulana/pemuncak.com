@@ -21,7 +21,7 @@ admin.controller('Destination', function($scope, $destination, $helper, $action,
   $scope.data.limit = $scope.data.limitData[0];
 
   // action
-  $scope.action.method;
+  $scope.action.method = '';
 
   //
   $scope.action.orderBy = function(field){
@@ -68,6 +68,7 @@ admin.controller('Destination', function($scope, $destination, $helper, $action,
     });
   };
 
+  // paging
   $scope.data.paging = [];
   $scope.action.paging = function(){
     $destination.count().then(function(response){
@@ -223,7 +224,7 @@ admin.controller('Destination', function($scope, $destination, $helper, $action,
           text: response.data.message
         });
         $helper.modal('delete', 'close');
-        // 
+        //
         $scope.action.load();
         //
         $scope.action.paging();

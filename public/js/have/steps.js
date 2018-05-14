@@ -11,7 +11,10 @@ admin.controller('Step', function($scope, $http, $location, $helper, $action, $s
   $scope.action.create = {};
   $scope.action.edit = {};
   $scope.action.trash = {};
-  $scope.action.method;
+  $scope.action.method = '';
+  $scope.data.limitSelect = [5, 10, 20, 30];
+  $scope.data.limit = $scope.data.limitSelect[0];
+  $scope.data.orderBy = '-id';
 
   // clear field
   $scope.clearField = function(){
@@ -29,6 +32,11 @@ admin.controller('Step', function($scope, $http, $location, $helper, $action, $s
 
   // load
   $scope.action.load();
+
+  // count
+  $step.count().then(function(response){
+    $scope.data.count = response.data;
+  });
 
   // start create
   $scope.action.create.start = function(){

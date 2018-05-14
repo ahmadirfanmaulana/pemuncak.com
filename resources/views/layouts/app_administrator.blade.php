@@ -247,7 +247,7 @@
                 <span>Steps</span>
               </a>
             </li>
-            <li class="nav-item @yield('menu_users')" id="nav-users">
+            <li class="nav-item @yield('menu_climbers')" id="nav-users">
               <a class="nav-link pointer" href="{{ route('admin_climbers') }}">
                 <i class="icon ion ion-android-contacts"></i>
                 <span>Climbers</span>

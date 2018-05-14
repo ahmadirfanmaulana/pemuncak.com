@@ -27,7 +27,7 @@ admin.controller('PacketItem', function($scope, $helper, $action, $http , $packe
 
     $packetItem.count().then(function(response){
       $scope.data.count = response.data;
-    })
+    });
   };
   $scope.action.load();
 

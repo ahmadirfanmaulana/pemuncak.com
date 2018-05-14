@@ -1,7 +1,6 @@
 
 <ul class="nav nav-activity-profile">
   <li class="nav-item"><a href="#" class="nav-link" ng-click="action.load()"><i class="icon fa fa-refresh tx-purple"></i> Refresh Posts</a></li>
-  <li class="nav-item"><a href="#" class="nav-link"><i class="icon ion-image tx-primary"></i> Publish photo</a></li>
   <li class="nav-item"><a href="#" class="nav-link" ng-click="action.save.start()"><i class="icon ion-document-text tx-success"></i> Add an post</a></li>
 </ul>
 

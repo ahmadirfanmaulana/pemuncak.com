@@ -92,6 +92,7 @@ Route::post('destinations/where', 'ApiDestinationController@show');
 Route::post('destinations/create', 'ApiDestinationController@store');
 Route::post('destinations/delete', 'ApiDestinationController@destroy');
 Route::post('destinations/update', 'ApiDestinationController@update');
+Route::get('destinations/count', 'ApiDestinationController@count');
 
 
 /*
@@ -104,6 +105,7 @@ Route::post('steps/find', 'ApiStepController@show');
 Route::post('steps/create', 'ApiStepController@store');
 Route::post('steps/delete', 'ApiStepController@destroy');
 Route::post('steps/update', 'ApiStepController@update');
+Route::get('steps/count', 'ApiStepController@count');
 
 /*
   ---------
@@ -115,3 +117,12 @@ Route::post('posts/find', 'ApiPostController@show');
 Route::post('posts/create', 'ApiPostController@store');
 Route::post('posts/delete', 'ApiPostController@destroy');
 Route::post('posts/update', 'ApiPostController@update');
+Route::get('posts/count', 'ApiPostController@count');
+
+/*
+  ---------
+  CLIMBERS
+  ---------
+*/
+Route::get('climbers/get', 'ApiClimberController@index');
+Route::get('climbers/count', 'ApiClimberController@count'); 

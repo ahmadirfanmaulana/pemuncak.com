@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  Adventures
+  Destinations
 @endsection
 
 @section('menu-' . $menu_active)
@@ -27,6 +27,10 @@
   <div id="flight-details" class="innerpage-section-padding" style="padding-bottom: 0px;">
     <div class="container">
         <div class="row">
+          <div class="page-heading">
+            <h2>Favorite Destination</h2>
+            <hr class="heading-line">
+          </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side">
                 <div class="detail-slider">
                     <div class="feature-slider">
@@ -307,10 +311,11 @@
   <div id="tour-grid" class="innerpage-section-padding">
     <div class="container">
         <div class="row">
-
+          <div class="page-heading">
+            <h2>More Destination</h2>
+            <hr class="heading-line">
+          </div>
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
-
-
                 <div class="row">
 
                   @foreach ($data['destinations'] as $destination)

@@ -68,12 +68,7 @@ class ApiDestinationController extends Controller
         }
 
         return response($result);
-    }
-
-    public function count()
-    {
-      return response($this->destinations->count());
-    }
+    } 
     /**
      * Show the form for editing the specified resource.
      *
@@ -111,5 +106,10 @@ class ApiDestinationController extends Controller
         $this->destinations->destroy($this->requests->id);
 
         return response(['message'=>'Destination Deleted Successfully !']);
+    }
+
+    public function count()
+    {
+      return response($this->destinations->count());
     }
 }

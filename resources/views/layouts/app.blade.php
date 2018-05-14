@@ -1,7 +1,3 @@
-@php
-  $pageActive = Request::session()->get('pageActive');
-@endphp
-
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 
@@ -13,7 +9,7 @@
         <title>Pemuncak.com | @yield('title')</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="icon" href="images/favicon.png" type="image/x-icon">
+        <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i%7CMerriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -49,6 +45,11 @@
 
         <!-- Color Panel -->
         <link rel="stylesheet" href="{{ asset('css/jquery.colorpanel.css') }}">
+        <style media="screen">
+          .page-cover{
+            padding-top: calc(70px + 80px);
+          }
+        </style>
     </head>
 
 
@@ -154,9 +155,6 @@
                                 </li>
                                 <li class="@yield('menu-destinations')">
                                   <a href="{{ url('destinations') }}">Destinations</a>
-                                </li>
-                                <li class="@yield('menu-camping')">
-                                  <a href="{{ url('camping') }}">camping</a>
                                 </li>
                                 <li class="@yield('menu-news')">
                                   <a href="{{ url('news') }}">News</a>

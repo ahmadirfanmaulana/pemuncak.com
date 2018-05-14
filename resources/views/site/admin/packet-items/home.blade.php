@@ -20,12 +20,11 @@
   <div class="col-md-12">
     <ul class="nav nav-activity-profile">
       <li class="nav-item"><a href="#" class="nav-link" ng-click="action.load()"><i class="icon fa fa-refresh tx-purple"></i> Refresh Packet Item</a></li>
-      <li class="nav-item"><a href="#" class="nav-link"><i class="icon ion-image tx-primary"></i> Publish photo</a></li>
       <li class="nav-item"><a href="#" class="nav-link" ng-click="action.save.start()"><i class="icon ion-document-text tx-success"></i> Add an Packet Item</a></li>
     </ul>
     <div class="card mg-t-20 card-table">
       <div class="card-header">
-        <h6 class="slim-card-title valign-bottom">LIST PACKET ITEMS <span class="pull-right">All Packet Item : <span class="text-info">@{{ data.count }} <i class="fa fa-flag"></i></span> </span> </h6>
+        <h6 class="slim-card-title valign-bottom">LIST PACKET ITEMS <span class="pull-right">All Packet Item : <span class="text-info">@{{ data.count }} <i class="icon ion-filing"></i></span> </span> </h6>
       </div><!-- card-header -->
       <div class="card-header">
         <h6 class="slim-card-title valign-bottom">
@@ -111,7 +110,7 @@
                     <a data-toggle="tooltip-danger" title="Delete @{{ row.name }} Destination" href="" class="editing-false editing-false-@{{ row.id }} tx-danger-600 tx-24 mg-l-10" ng-click="action.trash.start(row)">
                       <i class="fa fa-trash-o"></i>
                     </a>
-                  </td> 
+                  </td>
                 </tr>
               </tbody>
             </table>
