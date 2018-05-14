@@ -7,11 +7,18 @@ use App\Destination;
 
 class LandingController extends Controller
 {
-    //
+    public function __construct(Destination $destinations)
+    {
+      $this->destinations = $destinations;
+    }
     public function home()
     {
+      $data = array(
+        'favorite_destinations' => $this->destinations->with(['province', 'regional'])->get()
+      );
 
       return view('site.landing.home')
+      ->with('data', $data)
       ->with('menu_active', 'home');
     }
 
@@ -40,7 +47,7 @@ class LandingController extends Controller
       return view('site.landing.destinations_detail')
       ->with('menu_active', 'destinations')
       ->with('data', $data);
-    } 
+    }
 
     public function blog()
     {

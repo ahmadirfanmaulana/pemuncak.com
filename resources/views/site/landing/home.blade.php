@@ -185,131 +185,44 @@
                   </div><!-- end page-heading -->
 
                    <div class="owl-carousel owl-theme owl-custom-arrow" id="owl-tour-offers">
+                     @foreach ($data['favorite_destinations'] as $favdes)
+                       <div class="item">
+                         <div class="main-block tour-block">
+                           <div class="main-img">
+                             <a href="{{ route('destination_detail', ['id' => $favdes->id]) }}">
+                               <img src="{{ asset('upload/img/destinations/poster/' . $favdes->poster) }}" class="img-responsive" alt="tour-img" style="height: 200px; object-fit: cover;"/>
+                             </a>
+                           </div><!-- end offer-img -->
 
-                      <div class="item">
-                          <div class="main-block tour-block">
-                              <div class="main-img">
-                              	<a href="tour-detail-right-sidebar.html">
-                                  	<img src="images/tour-1.jpg" class="img-responsive" alt="tour-img" />
-                              	</a>
-                              </div><!-- end offer-img -->
+                           <div class="offer-price-2">
+                             <ul class="list-unstyled">
+                               <li class="price">$568.00<a href="{{ route('destination_detail', ['id' => $favdes->id]) }}" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
+                             </ul>
+                           </div><!-- end offer-price-2 -->
 
-                              <div class="offer-price-2">
-                                  <ul class="list-unstyled">
-                                      <li class="price">$568.00<a href="tour-detail-right-sidebar.html" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                  </ul>
-                              </div><!-- end offer-price-2 -->
-
-                              <div class="main-info tour-info">
-                              	<div class="main-title tour-title">
-                                      <a href="tour-detail-right-sidebar.html">China Temple Tour</a>
-                                      <p>From: China</p>
-                                      <div class="rating">
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star grey"></i></span>
-                                      </div>
-                                  </div><!-- end tour-title -->
-                              </div><!-- end tour-info -->
-                          </div><!-- end tour-block -->
-                      </div><!-- end item -->
-
-                      <div class="item">
-                          <div class="main-block tour-block">
-                              <div class="main-img">
-                                  <a href="tour-detail-right-sidebar.html">
-                                  	<img src="images/tour-2.jpg" class="img-responsive" alt="tour-img" />
-                              	</a>
-                              </div><!-- end offer-img -->
-
-                              <div class="offer-price-2">
-                                  <ul class="list-unstyled">
-                                      <li class="price">$745.00<a href="tour-detail-right-sidebar.html" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                  </ul>
-                              </div><!-- end offer-price-2 -->
-
-                              <div class="main-info tour-info">
-                              	<div class="main-title tour-title">
-                                      <a href="tour-detail-right-sidebar.html">African Safari Tour</a>
-                                      <p>From: Africa</p>
-                                      <div class="rating">
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star grey"></i></span>
-                                      </div>
-                                  </div><!-- end tour-title -->
-                              </div><!-- end tour-info -->
-                          </div><!-- end tour-block -->
-                      </div><!-- end item -->
-
-                      <div class="item">
-                          <div class="main-block tour-block">
-                              <div class="main-img">
-                                  <a href="tour-detail-right-sidebar.html">
-                                  	<img src="images/tour-3.jpg" class="img-responsive" alt="tour-img" />
-                              	</a>
-                              </div><!-- end offer-img -->
-
-                              <div class="offer-price-2">
-                                  <ul class="list-unstyled">
-                                      <li class="price">$459.00<a href="tour-detail-right-sidebar.html" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                  </ul>
-                              </div><!-- end offer-price-2 -->
-
-                              <div class="main-info tour-info">
-                              	<div class="main-title tour-title">
-                                      <a href="tour-detail-right-sidebar.html">Paris City Tour</a>
-                                      <p>From: Paris</p>
-                                      <div class="rating">
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star grey"></i></span>
-                                      </div>
-                                  </div><!-- end tour-title -->
-                              </div><!-- end tour-info -->
-                          </div><!-- end tour-block -->
-                      </div><!-- end item -->
-
-                      <div class="item">
-                          <div class="main-block tour-block">
-                              <div class="main-img">
-                                  <a href="tour-detail-right-sidebar.html">
-                                  	<img src="images/tour-4.jpg" class="img-responsive" alt="tour-img" />
-                              	</a>
-                              </div><!-- end offer-img -->
-
-                              <div class="offer-price-2">
-                                  <ul class="list-unstyled">
-                                      <li class="price">$745.00<a href="tour-detail-right-sidebar.html" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                  </ul>
-                              </div><!-- end offer-price-2 -->
-
-                              <div class="main-info tour-info">
-                              	<div class="main-title tour-title">
-                                      <a href="tour-detail-right-sidebar.html">China Temple Tour</a>
-                                      <p>From: China</p>
-                                      <div class="rating">
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star orange"></i></span>
-                                          <span><i class="fa fa-star grey"></i></span>
-                                      </div>
-                                  </div><!-- end tour-title -->
-                              </div><!-- end tour-info -->
-                          </div><!-- end tour-block -->
-                      </div><!-- end item -->
-
+                           <div class="main-info tour-info">
+                             <div class="main-title tour-title">
+                               <a href="tour-detail-right-sidebar.html">{{ $favdes->name }}</a>
+                               <p>
+                                 <i class="fa fa-map-marker"></i>
+                                 {{ $favdes->regional->name . " - " . $favdes->province->name }}
+                               </p>
+                               <div class="rating">
+                                 <span><i class="fa fa-star orange"></i></span>
+                                 <span><i class="fa fa-star orange"></i></span>
+                                 <span><i class="fa fa-star orange"></i></span>
+                                 <span><i class="fa fa-star orange"></i></span>
+                                 <span><i class="fa fa-star grey"></i></span>
+                               </div>
+                             </div><!-- end tour-title -->
+                           </div><!-- end tour-info -->
+                         </div><!-- end tour-block -->
+                       </div><!-- end item -->
+                     @endforeach
                   </div><!-- end owl-tour-offers -->
 
                   <div class="view-all text-center">
-                  	<a href="tour-grid-right-sidebar.html" class="btn btn-black">View All</a>
+                  	<a href="{{ route('destination') }}" class="btn btn-black">View All</a>
                   </div><!-- end view-all -->
               </div><!-- end columns -->
           </div><!-- end row -->
