@@ -4,14 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Auth\Guard;
 
-use App\Adventure;
-use App\Packet;
-use App\PacketSelect;
-use App\Photo;
-use App\RouteNav;
-use App\Tag;
-use App\Transaction;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -125,4 +117,18 @@ Route::get('posts/count', 'ApiPostController@count');
   ---------
 */
 Route::get('climbers/get', 'ApiClimberController@index');
-Route::get('climbers/count', 'ApiClimberController@count'); 
+Route::get('climbers/count', 'ApiClimberController@count');
+
+/*
+  ---------
+  PACKETS
+  ---------
+*/
+Route::get('packets/my-packets', 'ApiPacketController@my_packets');
+Route::get('packets/my-packets/count', 'ApiPacketController@my_packets_count');
+
+/*
+  ---------
+  USER
+  ---------
+*/

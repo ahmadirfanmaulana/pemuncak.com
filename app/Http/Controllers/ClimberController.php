@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Packet;
 
 class ClimberController extends Controller
 {
     //
+    public function __construct(Packet $packets)
+    {
+      $this->packets = $packets;
+    }
+
     public function index()
     {
       return view('site.climber.dashboard')
@@ -30,7 +36,13 @@ class ClimberController extends Controller
     // packets
     public function packets()
     {
+      $data = array(
 
+      );
+
+      return view('site.climber.packets.home')
+      ->with('data', $data)
+      ->with('menu_active', 'packets');
     }
 
 

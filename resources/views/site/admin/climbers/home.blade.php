@@ -8,6 +8,14 @@
   active
 @endsection
 
+@section('breadcrumbs')
+  <ol class="breadcrumb slim-breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin') }}">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Climbers</li>
+  </ol>
+@endsection
+
 @section('clientAttr')
   ng-controller="Climber"
 @endsection
@@ -26,7 +34,7 @@
   <div class="col-md-12">
 
     <ul class="nav nav-activity-profile">
-      <li class="nav-item"><a href="#" class="nav-link" ng-click="action.load()"><i class="icon fa fa-refresh tx-purple"></i> Refresh Posts</a></li> 
+      <li class="nav-item"><a href="#" class="nav-link" ng-click="action.load()"><i class="icon fa fa-refresh tx-purple"></i> Refresh Posts</a></li>
     </ul>
 
     <div class="card card-table mg-t-20">

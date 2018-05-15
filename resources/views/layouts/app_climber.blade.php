@@ -219,12 +219,6 @@
               <span>Adventure</span>
             </a>
           </li>
-          <li class="nav-item @yield('menu_climbing')" id="nav-climbing">
-            <a href="{{ route('climber_climbing') }}" class="nav-link pointer">
-              <i class="icon flaticon-trekking"></i>
-              <span>Climbing</span>
-            </a>
-          </li>
           <li class="nav-item @yield('menu_posts')" id="nav-posts">
             <a href="{{ route('climber_posts') }}" class="nav-link pointer">
               <i class="icon ion-paper-airplane"></i>
@@ -246,10 +240,7 @@
     <div class="slim-mainpanel" style="position: relative;" @yield('clientAttr')>
         <div class="container">
           <div class="slim-pageheader">
-            <ol class="breadcrumb slim-breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ route('climber') }}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-            </ol>
+            @yield('breadcrumbs')
             <h6 class="slim-pagetitle">@yield('title')</h6>
           </div><!-- slim-pageheader -->
 
@@ -319,9 +310,8 @@
 
     <script src="{{ asset('admin/js/slim.js') }}"></script>
     <script src="{{ asset('admin/js/jquery.vmap.sampledata.js') }}"></script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
-    <script>
-    </script>
+    <script src="{{ asset('js/climber.js') }}"></script>
+    @yield('javascript') 
   </body>
 
 <!-- Mirrored from themepixels.me/slim/template/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 22 Apr 2018 00:15:02 GMT -->

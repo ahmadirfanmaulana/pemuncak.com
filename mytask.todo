@@ -12,4 +12,6 @@ Tasks :
   ✔ admin : steps : limit @done(2018-05-14 11:50) @project(Tasks )
   ✔ admin : steps : search @done(2018-05-14 11:50) @project(Tasks )
   ✔ admin : make climbers menu  @done(2018-05-14 13:12) @project(Tasks )
-  ☐ admin : breadcrumb
+  ✔ admin : breadcrumb @done(2018-05-15 09:51) @project(Tasks )
+  ☐ climber : packet menu
+  ☐ ulik : me data 

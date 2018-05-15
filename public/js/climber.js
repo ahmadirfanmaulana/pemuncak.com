@@ -1,32 +1,12 @@
 /*
 
   --------------------------------------
-  Start jQuery
-  --------------------------------------
-
-*/
-
-$(document).ready(function(){
-  //
-});
-
-/*
-
-  --------------------------------------
-  End jQuery
-  --------------------------------------
-
-*/
-
-/*
-
-  --------------------------------------
   Start Angular
   --------------------------------------
 
 */
 
-var admin = angular.module('admin', ['ngRoute']);
+var climber = angular.module('climber', ['ngRoute']);
 
 
 /*
@@ -37,7 +17,7 @@ var admin = angular.module('admin', ['ngRoute']);
 
 */
 
-admin.factory('$config', function(){
+climber.factory('$config', function(){
   var Config = {};
 
   Config.baseUrl = 'http://127.0.0.1:8000/';
@@ -45,7 +25,7 @@ admin.factory('$config', function(){
   return Config;
 });
 
-admin.factory('$helper', function($http, $config){
+climber.factory('$helper', function($http, $config){
   var Helper = {};
 
   Helper.menu = function(active){
@@ -186,7 +166,7 @@ admin.factory('$helper', function($http, $config){
   return Helper;
 });
 
-admin.factory('$action', function($http, $config){
+climber.factory('$action', function($http, $config){
   Query = {};
 
   Query.customUrl = function(data={}){
@@ -228,124 +208,7 @@ admin.factory('$action', function($http, $config){
   return Query;
 });
 
-admin.factory('$destination', function($config, $http){
-
-  //
-  var Destination = {};
-
-  //
-  Destination.url = $config.baseUrl + 'api/' + 'destinations/';
-
-  //
-  Destination.get = function(){
-    return $http.post(Destination.url, []);
-  };
-
-  Destination.all = Destination.get;
-
-  Destination.count = function(){
-    return $http.get(Destination.url + 'count');
-  };
-
-  //
-  return Destination;
-
-});
-
-admin.factory('$step', function($config, $http){
-
-  //
-  var Step = {};
-
-  //
-  Step.url = $config.baseUrl + 'api/' + 'steps/';
-
-  //
-  Step.get = function(){
-    return $http.get(Step.url);
-  };
-  Step.getWithData = function(data){
-    return $http.post(Step.url + 'find', data);
-  };
-  Step.create = function(data){
-    return $http.post(Step.url + 'create', data);
-  };
-  Step.delete = function(data){
-    return $http.post(Step.url + 'delete', data);
-  };
-  Step.update = function(data){
-    return $http.post(Step.url + 'update', data);
-  };
-  Step.count = function(){
-    return $http.get(Step.url + 'count');
-  };
-
-  //
-  return Step;
-
-});
-
-admin.factory('$climber', function($config, $http){
-
-  //
-  var Climber = {};
-
-  //
-  Climber.url = $config.baseUrl + 'api/' + 'climbers/';
-
-  //
-  Climber.get = function(){
-    return $http.get(Climber.url + 'get');
-  };
-  Climber.getWithData = function(data){
-    return $http.post(Climber.url + 'find', data);
-  };
-  Climber.delete = function(data){
-    return $http.post(Climber.url + 'delete', data);
-  };
-  Climber.count = function(){
-    return $http.get(Climber.url + 'count');
-  };
-
-  //
-  return Climber;
-
-});
-
-admin.factory('$post', function($config, $http){
-
-  //
-  var Post = {};
-
-  //
-  Post.url = $config.baseUrl + 'api/' + 'posts/';
-
-  //
-  Post.get = function(){
-    return $http.get(Post.url + 'get');
-  };
-  Post.getWithData = function(data){
-    return $http.post(Post.url + 'find', data);
-  };
-  Post.create = function(data){
-    return $http.post(Post.url + 'create', data);
-  };
-  Post.delete = function(data){
-    return $http.post(Post.url + 'delete', data);
-  };
-  Post.update = function(data){
-    return $http.post(Post.url + 'update', data);
-  };
-  Post.count = function(){
-    return $http.get(Post.url + 'count');
-  };
-
-  //
-  return Post;
-
-});
-
-admin.factory('$user', function($config, $http){
+climber.factory('$user', function($config, $http){
 
   //
   var User = {};
@@ -370,7 +233,7 @@ admin.factory('$user', function($config, $http){
     return $http.post(User.url + 'update', data);
   };
   User.me = function(){
-    return $http.get($config.baseUrl + 'me');
+    return $http.get($config.baseUrl + 'users/me');
   };
 
   //
@@ -378,103 +241,27 @@ admin.factory('$user', function($config, $http){
 
 });
 
-admin.factory('$packetItem', function($config, $http){
+climber.factory('$packet', function($config, $http){
+  //
+  var Packet = {};
 
   //
-  var PacketItem = {};
-
-  //
-  PacketItem.url = $config.baseUrl + 'api/' + 'packet-items/';
-
-  //
-  PacketItem.get = function(){
-    return $http.get(PacketItem.url);
+  Packet.url = $config.baseUrl + 'api/packets';
+  Packet.myPackets = function(){
+    return $http.get(Packet.url + '/my-packets');
   };
-  PacketItem.getWithData = function(data){
-    return $http.post(PacketItem.url + 'find', data);
-  };
-  PacketItem.create = function(data){
-    return $http.post(PacketItem.url + 'create', data);
-  };
-  PacketItem.delete = function(data){
-    return $http.post(PacketItem.url + 'delete', data);
-  };
-  PacketItem.update = function(data){
-    return $http.post(PacketItem.url + 'update', data);
-  };
-
-  PacketItem.count = function(){
-    return $http.get(PacketItem.url + 'count');
+  Packet.myPacketsCount = function(){
+    return $http.get(Packet.url + '/my-packets/count');
   };
 
   //
-  return PacketItem;
+  return Packet;
+});
+
+climber.controller('header', function($scope){
 
 });
 
-/*
-
-  --------------------------------------
-  End Factory
-  --------------------------------------
-
-*/
-
-/*
-
-  --------------------------------------
-  Directives
-  --------------------------------------
-
-*/
-
-//
-admin.directive('ngLinkto', function() {
-    return {
-        restrict: 'A',
-        link: function(scope, elem, attrs) {
-            if(attrs.ngClick || attrs.href === '' || attrs.href === '#' || attrs.type === 'silent'){
-                elem.on('click', function(e){
-                    e.preventDefault();
-                });
-            }
-        },
-        controller: function($scope, $location, $helper){
-          $scope.goTo = function(path){
-            $location.path(path);
-          };
-        }
-   };
-});
-
-/*
-
-  --------------------------------------
-  End Directives
-  --------------------------------------
-
-*/
-
-/*
-
-  --------------------------------------
-  Controller
-  --------------------------------------
-
-*/
-
-admin.controller('header', function($scope){
+climber.controller('navbar', function($scope){
 
 });
-
-admin.controller('navbar', function($scope){
-
-});
-
-/*
-
-  --------------------------------------
-  End Controller
-  --------------------------------------
-
-*/

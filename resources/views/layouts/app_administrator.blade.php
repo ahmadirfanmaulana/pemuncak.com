@@ -260,10 +260,7 @@
       <div class="slim-mainpanel" style="position: relative;" @yield('clientAttr')>
           <div class="container">
             <div class="slim-pageheader">
-              <ol class="breadcrumb slim-breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-              </ol>
+              @yield('breadcrumbs') 
               <h6 class="slim-pagetitle">@yield('title')</h6>
             </div><!-- slim-pageheader -->
 

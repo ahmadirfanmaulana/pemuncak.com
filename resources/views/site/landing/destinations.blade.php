@@ -355,9 +355,11 @@
                 </div><!-- end row -->
 
                 <div class="pages">
-                    <button type="button" name="button" class="btn btn-success btn-lg" style="margin-top:65px;">
+                  <div class="view-all text-center">
+                    <a href="#" class="btn btn-black">
                       <i class="fa fa-plus" style="margin-right: 10px;"></i> Load More
-                    </button>
+                    </a>
+                  </div>
                     {{-- <ol class="pagination">
                         <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
                         <li class="active"><a href="#">1</a></li>

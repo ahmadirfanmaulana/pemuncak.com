@@ -8,6 +8,14 @@
   active
 @endsection
 
+@section('breadcrumbs')
+  <ol class="breadcrumb slim-breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin') }}">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Packet Items</li>
+  </ol>
+@endsection
+
 @section('clientAttr')
   ng-controller="PacketItem"
 @endsection

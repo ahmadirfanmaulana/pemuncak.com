@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Packet extends Model
 {
     //
-    protected $guarded = []; 
+    protected $guarded = [];
 
+    public function user()
+    {
+      return $this->belongsTo('App\User');
+    }
     public function destination()
     {
       return $this->belongsTo('App\Destination');

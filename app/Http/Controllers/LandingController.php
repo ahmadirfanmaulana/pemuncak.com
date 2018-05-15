@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use App\Destination;
 use App\User;
 use App\Adventure;
+use App\Post;
 
 class LandingController extends Controller
 {
-    public function __construct(Destination $destinations, User $users, Adventure $adventures)
+    public function __construct(Destination $destinations, User $users, Adventure $adventures, Post $posts)
     {
       $this->destinations = $destinations;
       $this->adventures = $adventures;
       $this->users = $users;
+      $this->posts = $posts;
     }
     public function home()
     {
@@ -58,8 +60,24 @@ class LandingController extends Controller
 
     public function blog()
     {
+      $data = array(
+        'all_blog' => $this->posts->where('type', 'blog')->with(['user'])->get()
+      );
+
       return view('site.landing.blog')
-      ->with('menu_active', 'blogs');
+      ->with('data', $data)
+      ->with('menu_active', 'blog');
+    }
+    public function blog_detail($id)
+    {
+      $data = array(
+        'data_blog' => $this->posts->where(['type' => 'blog', 'id' => $id])->with(['user'])->first(),
+        'recent_blog' => $this->posts->where('type', 'blog')->with(['user'])->orderBy('created_at', 'desc')->skip(0)->take(5)->get()
+      );
+
+      return view('site.landing.blog_detail')
+      ->with('data', $data)
+      ->with('menu_active', 'blog');
     }
 
     public function news()
